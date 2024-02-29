@@ -1,17 +1,17 @@
 <script>
     import ArticleItem from "../lib/article-item.svelte";
+    import data from "../lib/articles.json"
 
+    let articles = data;
 
-    let articles = [];
+    $: console.log(articles)
 
     function addArticle() {
         console.log('add');
     }
 </script>
 
-
 <h1>Blog</h1>
-
 
 {#if (articles.length > 0)}
 <table>
@@ -22,7 +22,7 @@
         <th scope="column">Statut</th>
     </tr>
         {#each articles as article}
-            <ArticleItem articleData={article}/>
+            <ArticleItem articleData={article} />
         {/each}
 </table>
 {:else}
