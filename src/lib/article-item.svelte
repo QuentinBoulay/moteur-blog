@@ -1,30 +1,30 @@
 <script>
 
     import { goto } from '$app/navigation';
+    import { articles } from './stores.js';
 
-    export let articleData;
-    export let articlesList;
+    export let article;
 
     function showArticle() {
-        goto(`/article/${articleData.id}`);
+        goto(`/article/${article.id}`);
     }
 
     function updateArticle() {
-        goto(`/article/${articleData.id}/edit`);
+        goto(`/article/${article.id}/edit`);
     }
 
     function deleteArticle() {
-        const index = articlesList.findIndex(article => article.id === articleData.id);
-        articlesList.splice(index, 1);
+        articles.delete(article.id);
+
     }
 </script>
 
-{#if (articleData)}
+{#if (article)}
     <tr>
-        <td>{articleData.title}</td>
-        <td>{articleData.date}</td>
-        <td>{articleData.categories}</td>
-        <td>{articleData.status}</td>
+        <td>{article.title}</td>
+        <td>{article.date}</td>
+        <td>{article.categories}</td>
+        <td>{article.status}</td>
         <td><button on:click={showArticle}>Voir</button></td>
         <td><button on:click={updateArticle}>Modifier</button></td>
         <td><button on:click={deleteArticle}>Supprimer</button></td>
