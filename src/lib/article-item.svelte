@@ -3,5 +3,10 @@
 </script>
 
 {#if (articleData)}
-    <p>Article - {articleData.title}</p>
+    <tr>
+        <td>{articleData.title}</td>
+        <td>{articleData.date}</td>
+        <td>{articleData.categories}</td>
+        <td>{articleData.status}</td>
+    </tr>
 {/if}
