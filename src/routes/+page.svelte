@@ -1,4 +1,5 @@
 <script>
+    import { goto } from '$app/navigation';
     import ArticleItem from "../lib/article-item.svelte";
     import data from "../lib/articles.json"
 
@@ -7,7 +8,7 @@
     $: console.log(articles)
 
     function addArticle() {
-        console.log('add');
+        goto(`/article/new`);
     }
 </script>
 
