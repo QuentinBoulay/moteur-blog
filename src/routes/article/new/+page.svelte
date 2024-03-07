@@ -34,6 +34,7 @@
 <h1>Création d'un nouvel article</h1>
 
 <input type="text" placeholder="Titre de l'article" bind:value={newArticle.title}>
+<br>
 
 <select multiple bind:value={selected}>
     {#each categories as category}
@@ -42,14 +43,18 @@
         </option>
     {/each}
 </select>
+<br>
 
 <input type="text" placeholder="Mots-clés de l'article" bind:value={newArticle.keywords}>
+<br>
 
 <select bind:value={newArticle.status}>
     <option value="draft">Brouillon</option>
     <option value="published">Publié</option>
 </select>
+<br>
 
 <textarea cols="30" rows="10" bind:value={newArticle.text}></textarea>
+<br>
 
 <button on:click={addArticle}>Ajouter l'article</button>

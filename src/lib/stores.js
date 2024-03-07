@@ -2,10 +2,11 @@ import { writable, get } from 'svelte/store';
 import initialData from './articles.json';
 
 function createArticlesStore() {
-    const { subscribe, update } = writable(initialData);
+    const { subscribe, update, set } = writable(initialData);
 
     return {
         subscribe,
+        set,
         add: (article) => update(articles => [...articles, article]),
         delete: (id) => update(articles => articles.filter(article => article.id !== id)),
         update: (updatedArticle) => update(articles => {
