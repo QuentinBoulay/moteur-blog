@@ -6,6 +6,10 @@
     function addArticle() {
         goto(`/article/new`);
     }
+
+    function addCategory() {
+        goto(`/category/new`);
+    }
 </script>
 
 <h1>Blog</h1>
@@ -27,3 +31,4 @@
 {/if}
 
 <button on:click={addArticle}>Ajouter un article</button>
+<button on:click={addCategory}>Ajouter une catégorie</button>

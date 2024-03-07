@@ -19,9 +19,25 @@ function createArticlesStore() {
     };
 }
 
+function createCategoryStore() {
+    const { subscribe, update } = writable([]);
+
+    return {
+        subscribe,
+        set: (categories) => update(() => categories),
+        add: (category) => update(categories => [...categories, category]),
+    };
+}
+
 export const articles = createArticlesStore();
+export const categories = createCategoryStore();
 
 export function getArticles() {
     return get(articles);
 }
+
+export function getCategories() {
+    return get(categories);
+}
+
  

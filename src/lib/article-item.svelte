@@ -4,6 +4,8 @@
 
     export let article;
 
+    console.log(article)
+
     function showArticle() {
         goto(`/article/${article.id}`);
     }
