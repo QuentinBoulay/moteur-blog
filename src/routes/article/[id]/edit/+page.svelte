@@ -2,35 +2,49 @@
     import { page } from '$app/stores';
     import { articles } from '../../../../lib/stores';
     import { goto } from '$app/navigation';
-
+    let id;
     let titleValue = '';
+    let date;
     let textValue = '';
     let categoriesValue = [];
+    let keywords
+    let status
 
     $: {
         const article = $articles.find(article => article.id == $page.params.id);
         if (article) {
-            if (!titleValue) titleValue = article.title;
-            if (!textValue) textValue = article.text;
+            titleValue = titleValue || article.title;
+            textValue = textValue || article.text;
+            categoriesValue = categoriesValue.length ? categoriesValue : article.categories;
+            date = article.date
+            keywords = article.keywords
+            status = article.status
+            id = article.id;
+        }
+    }
+
+    function updateCategories(category, checked) {
+        if (checked) {
+            categoriesValue.push(category);
+        } else {
+            categoriesValue = categoriesValue.filter(c => c !== category);
         }
     }
 
     function updateArticle() {
-        articles.update(articles => {
-            return articles.map(article => {
-                if (article.id == $page.params.id) {
-                    return {
-                        ...article,
-                        title: titleValue,
-                        text: textValue,
-                    };
-                } else {
-                    return article;
-                }
-            });
-        });
+        const updatedArticle = {
+            id: id,
+            title: titleValue,
+            date: date,
+            text: textValue,
+            categories: categoriesValue,
+            keywords: keywords,
+            status: status
+        };
 
-        console.log(articles.update)
+        console.log(updatedArticle)
+
+        articles.update($page.params.id, updatedArticle);
 
         goto(`/`)
     }
@@ -52,7 +66,7 @@
         <label>Categories :
             {#each article.categories as category}
                 <label for={category}>{category}
-                    <input type="checkbox" id={category} name="categories" />
+                    <input type="checkbox" id={category} name="categories" checked={categoriesValue.includes(category)} on:change={(e) => updateCategories(category, e.target.checked)} />
                 </label>
             {/each}
         </label>
@@ -61,4 +75,3 @@
         {/if}
     {/each}
 {/if}
-
