@@ -6,7 +6,8 @@
     let titleValue = '';
     let textValue = '';
 
-    let selected = [];
+    let selectedCategories = [];
+    let selectedStatus;
 
     let categories = getCategories();
 
@@ -18,7 +19,8 @@
             } else {
                 titleValue = article.title;
                 textValue = article.text;
-                selected = article.categories;
+                selectedCategories = article.categories;
+                selectedStatus = article.status
             }
         }
     }
@@ -45,7 +47,7 @@
         </label>
         <br>
         <label>Categories :         
-            <select multiple bind:value={selected}>
+            <select multiple bind:value={selectedCategories}>
                 {#each categories as category}
                     <option value={category}>
                         {category.name}
@@ -54,6 +56,13 @@
             </select>
         </label>
         <br>
+        <label>Status :
+            <select bind:value={selectedStatus}>
+                <option value="published">Published</option>
+                <option value="draft">Draft</option>
+                <option value="archived">Archived</option>
+            </select>
+        </label>
         <button on:click={updateArticle}>Save</button>
         {/if}
     {/each}

@@ -7,8 +7,8 @@
         goto(`/article/new`);
     }
 
-    function addCategory() {
-        goto(`/category/new`);
+    function categoriesList() {
+        goto(`/categories`);
     }
 </script>
 
@@ -31,4 +31,4 @@
 {/if}
 
 <button on:click={addArticle}>Ajouter un article</button>
-<button on:click={addCategory}>Ajouter une catégorie</button>
+<button on:click={categoriesList}>Liste des catégories</button>
