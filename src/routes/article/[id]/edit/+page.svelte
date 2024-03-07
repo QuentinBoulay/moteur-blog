@@ -2,6 +2,7 @@
     import { page } from '$app/stores';
     import { articles } from '../../../../lib/stores';
     import { goto } from '$app/navigation';
+
     let id;
     let titleValue = '';
     let date;
@@ -13,13 +14,18 @@
     $: {
         const article = $articles.find(article => article.id == $page.params.id);
         if (article) {
-            titleValue = titleValue || article.title;
-            textValue = textValue || article.text;
-            categoriesValue = categoriesValue.length ? categoriesValue : article.categories;
-            date = article.date
-            keywords = article.keywords
-            status = article.status
-            id = article.id;
+            if (article.status === "archived") {
+                goto(`/`);
+            } else {
+                id = article.id;
+                titleValue = article.title;
+                date = article.date;
+                textValue = article.text;
+                categoriesValue = article.categories;
+                keywords = article.keywords;
+                status = article.status;
+            
+            }
         }
     }
 

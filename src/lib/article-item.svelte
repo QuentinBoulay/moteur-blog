@@ -1,5 +1,4 @@
 <script>
-
     import { goto } from '$app/navigation';
     import { articles } from './stores.js';
 
@@ -15,8 +14,9 @@
 
     function deleteArticle() {
         articles.delete(article.id);
-
     }
+
+    let disabled = false;
 </script>
 
 {#if (article)}
@@ -26,7 +26,7 @@
         <td>{article.categories}</td>
         <td>{article.status}</td>
         <td><button on:click={showArticle}>Voir</button></td>
-        <td><button on:click={updateArticle}>Modifier</button></td>
+        <td><button on:click={updateArticle} disabled={article.status === "archived" ? !disabled : disabled}>Modifier</button></td>
         <td><button on:click={deleteArticle}>Supprimer</button></td>
     </tr>
 {/if}
