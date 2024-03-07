@@ -1,8 +1,9 @@
 <script>
-    import { articles } from "../../../lib/stores.js";
+    import { articles, getArticles } from "../../../lib/stores.js";
+    import { goto } from '$app/navigation';
 
     let newArticle = {
-        id: articles.length + 1,
+        id: getArticles().length + 1,
         title: "",
         date: "",
         text: "",
@@ -17,12 +18,13 @@
 
         let categories = newArticle.categories.split(",");
         let keywords = newArticle.keywords.split(",");
-
+ 
         newArticle.date = today;
         newArticle.categories = categories;
         newArticle.keywords = keywords;
 
         articles.add(newArticle);
+        goto(`/`)
     }
 </script>
 
