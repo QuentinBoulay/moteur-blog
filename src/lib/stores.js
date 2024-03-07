@@ -8,9 +8,9 @@ function createArticlesStore() {
         subscribe,
         add: (article) => update(articles => [...articles, article]),
         delete: (id) => update(articles => articles.filter(article => article.id !== id)),
-        update: (id, updatedArticle) => update(articles => {
+        update: (updatedArticle) => update(articles => {
             return articles.map(article => {
-                if (article.id === id) {
+                if (article.id === updatedArticle.id) {
                     return { ...article, ...updatedArticle };
                 }
                 return article;

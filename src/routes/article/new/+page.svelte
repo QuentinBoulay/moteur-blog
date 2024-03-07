@@ -26,8 +26,6 @@
         newArticle.categories = selected.map(category => category.name);
         newArticle.keywords = keywords;
 
-        console.log(selected)
-
         articles.add(newArticle);
         goto(`/`)
     }

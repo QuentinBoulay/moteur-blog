@@ -27,7 +27,15 @@
 
     function updateArticle() {
 
-        console.log(updatedArticle);
+        const updatedArticle = {
+            id: $page.params.id,
+            title: titleValue,
+            text: textValue,
+            categories: selectedCategories,
+            status: selectedStatus
+        }
+
+        articles.update(updatedArticle);
 
         goto(`/`)
     }
