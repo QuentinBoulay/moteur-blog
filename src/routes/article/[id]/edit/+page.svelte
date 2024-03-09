@@ -12,20 +12,14 @@
 
     let categories = getCategories();
 
-    $: {
-        const foundArticle = $articles.find(a => a.id == $page.params.id);
-        if (foundArticle) {
-            if (foundArticle.status === "archived") {
-                goto(`/`);
-            } else {
-                article = { ...foundArticle };
-            }
-        }
-    }
-
     function updateArticle() {
+        let rawArticle = $articles.find(a => a.id == $page.params.id);
+        article = {
+            ...rawArticle,
+            categories: rawArticle.categories.map(category => category.name)
+        };
         articles.update(article);
-        goto(`/`)
+        goto(`/`);
     }
 </script>
 
@@ -45,7 +39,7 @@
         <label>Categories :         
             <select multiple bind:value={article.categories}>
                 {#each categories as category}
-                    <option value={category}>
+                    <option value={category} selected={article.categories.includes(category.name)} >
                         {category.name}
                     </option>
                 {/each}
