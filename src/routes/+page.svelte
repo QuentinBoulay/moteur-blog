@@ -13,6 +13,8 @@
 
         if (status) {
             filteredArticles = articlesList.filter(article => article.status === status);
+        } else {
+            filteredArticles = articlesList;
         }
 
         if (search) {
@@ -38,6 +40,7 @@
 
 <input type="text" placeholder="Rechercher un article" bind:value={search} />
 <select bind:value={status}>
+    <option value="">Tous les statuts</option>
     <option value="published">Publié</option>
     <option value="draft">Brouillon</option>
     <option value="archived">Archivé</option>
