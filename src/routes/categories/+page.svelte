@@ -5,6 +5,10 @@
     function addCategory() {
         goto(`/category/new`);
     }
+
+    function goToHome() {
+        goto(`/`);
+    }
 </script>
 
 <h1>Liste des catégories</h1>
@@ -25,3 +29,4 @@
 {/if}
 
 <button on:click={addCategory}>Ajouter une catégorie</button>
+<button on:click={goToHome}>Revenir à l'accueil</button>
