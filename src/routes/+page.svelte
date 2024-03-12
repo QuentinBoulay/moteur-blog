@@ -5,13 +5,18 @@
 
     let status;
     let category;
+    let search;
     let filteredArticles = [];
 
     $: {
-        let articlesTest = getArticles();
+        let articlesList = getArticles();
 
         if (status) {
-            filteredArticles = articlesTest.filter(article => article.status === status);
+            filteredArticles = articlesList.filter(article => article.status === status);
+        }
+
+        if (search) {
+            filteredArticles = articlesList.filter(article => article.title.includes(search));
         }
 
         console.log(filteredArticles)
@@ -25,18 +30,13 @@
         goto(`/categories`);
     }
 
-    function search(event) {
-        let search = event.target.value;
-        filteredArticles = filteredArticles.filter(article => article.title.includes(search));
-    }
-
 </script>
 
 <h1>Blog</h1>
 
 <p>Filtres :</p>
 
-<input type="text" placeholder="Rechercher un article" on:change={search} />
+<input type="text" placeholder="Rechercher un article" bind:value={search} />
 <select bind:value={status}>
     <option value="published">Publié</option>
     <option value="draft">Brouillon</option>
@@ -52,17 +52,21 @@
 
 
 {#if ($articles.length > 0)}
-<table>
-    <tr>
-        <th scope="column">Titre</th>
-        <th scope="column">Date de publication</th>
-        <th scope="column">Catégories</th>
-        <th scope="column">Statut</th>
-    </tr>
-    {#each filteredArticles as article (article.id)}
-        <ArticleItem {article} />
-    {/each}
-</table>
+    {#if (filteredArticles.length > 0)}
+    <table>
+        <tr>
+            <th scope="column">Titre</th>
+            <th scope="column">Date de publication</th>
+            <th scope="column">Catégories</th>
+            <th scope="column">Statut</th>
+        </tr>
+        {#each filteredArticles as article (article.id)}
+            <ArticleItem {article} />
+        {/each}
+    </table>
+    {:else}
+        <p>Aucun article ne correspond à votre recherche</p>
+    {/if}
 {:else}
     <p>Aucun article n'est disponible actuellement</p>
 {/if}
