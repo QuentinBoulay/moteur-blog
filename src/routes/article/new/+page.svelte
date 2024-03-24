@@ -32,6 +32,10 @@
         articles.add(newArticle);
         goto(`/`)
     }
+
+    function goToHome() {
+        goto(`/`);
+    }
 </script>
 
 <Header />
@@ -63,5 +67,8 @@
 <br>
 
 <button on:click={addArticle}>Ajouter l'article</button>
+<button on:click={goToHome}>Revenir à l'accueil</button>
+
 
 <Footer />
+

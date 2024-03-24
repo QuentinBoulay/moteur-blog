@@ -1,12 +1,15 @@
 <script>
     import { goto } from '$app/navigation';
     import { categories } from '../../lib/stores';
-    import "../../styles/global.css";
     import Header from '../../lib/templates/Header.svelte';
     import Footer from '../../lib/templates/Footer.svelte';
 
     function addCategory() {
         goto(`/category/new`);
+    }
+
+    function goToHome() {
+        goto(`/`);
     }
 </script>
 
@@ -31,5 +34,6 @@
 
 <button on:click={addCategory}>Ajouter une catégorie</button>
 <button on:click={() => goto(`/`)}>Retour à la liste des articles</button>
+<button on:click={goToHome}>Revenir à l'accueil</button>
 
 <Footer />
