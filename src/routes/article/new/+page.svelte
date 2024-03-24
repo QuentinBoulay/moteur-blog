@@ -1,6 +1,9 @@
 <script>
     import { articles, getArticles, getCategories } from "../../../lib/stores.js";
     import { goto } from '$app/navigation';
+    import "../../../styles/global.css";
+    import Header from '../../../lib/templates/Header.svelte';
+    import Footer from '../../../lib/templates/Footer.svelte';
 
     let selected = [];
 
@@ -31,6 +34,8 @@
     }
 </script>
 
+<Header />
+
 <h1>Création d'un nouvel article</h1>
 
 <input type="text" placeholder="Titre de l'article" bind:value={newArticle.title}>
@@ -58,3 +63,5 @@
 <br>
 
 <button on:click={addArticle}>Ajouter l'article</button>
+
+<Footer />

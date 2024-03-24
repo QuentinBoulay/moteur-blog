@@ -1,20 +1,34 @@
 <script>
     import { goto } from '$app/navigation';
-    import ArticleItem from "../lib/article-item.svelte";
+    import ArticleItem from "../lib/ArticleItem.svelte";
     import { articles, categories, getArticles } from "../lib/stores.js";
+    import "../styles/global.css";
+    import Header from '../lib/templates/Header.svelte';
+    import Footer from '../lib/templates/Footer.svelte';
 
     let status;
     let category;
+    let searchQuery = '';
     let filteredArticles = [];
 
     $: {
         let articlesTest = getArticles();
 
         if (status) {
-            filteredArticles = articlesTest.filter(article => article.status === status);
+            articlesTest = articlesTest.filter(article => article.status === status);
         }
 
-        console.log(filteredArticles)
+        if (status === 'all') articlesTest = getArticles();
+
+        if (category && category !== 'all') {
+            articlesTest = articlesTest.filter(article => article.categories.includes(category));
+        }
+
+        if (searchQuery) {
+            articlesTest = articlesTest.filter(article => article.title.includes(searchQuery));
+        }
+
+        filteredArticles = articlesTest;
     }
 
     function addArticle() {
@@ -26,18 +40,18 @@
     }
 
     function search(event) {
-        let search = event.target.value;
-        filteredArticles = filteredArticles.filter(article => article.title.includes(search));
+        searchQuery = event.target.value;
     }
 
 </script>
 
-<h1>Blog</h1>
+<Header />
 
 <p>Filtres :</p>
 
-<input type="text" placeholder="Rechercher un article" on:change={search} />
+<input type="text" placeholder="Rechercher un article" on:input={search} />
 <select bind:value={status}>
+    <option value="all">Tous les statuts</option>
     <option value="published">Publié</option>
     <option value="draft">Brouillon</option>
     <option value="archived">Archivé</option>
@@ -58,6 +72,7 @@
         <th scope="column">Date de publication</th>
         <th scope="column">Catégories</th>
         <th scope="column">Statut</th>
+        <th scope="column">Actions</th>
     </tr>
     {#each filteredArticles as article (article.id)}
         <ArticleItem {article} />
@@ -69,3 +84,5 @@
 
 <button on:click={addArticle}>Ajouter un article</button>
 <button on:click={categoriesList}>Liste des catégories</button>
+
+<Footer />
