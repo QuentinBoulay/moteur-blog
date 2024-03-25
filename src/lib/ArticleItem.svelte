@@ -13,6 +13,7 @@
     }
 
     function deleteArticle() {
+        console.log(article.id)
         articles.delete(article.id);
     }
 
@@ -25,9 +26,11 @@
         <td>{article.date}</td>
         <td>{article.categories}</td>
         <td>{article.status}</td>
-        <td><button class="btn btn-success" on:click={showArticle}>Voir</button></td>
-        <td><button class="btn btn-warning" on:click={updateArticle} disabled={article.status === "archived" ? !disabled : disabled}>Modifier</button></td>
-        <td><button class="btn btn-danger" on:click={deleteArticle}>Supprimer</button></td>
+        <td>
+            <button class="btn btn-success" on:click={showArticle}>Voir</button>
+            <button class="btn btn-warning" on:click={updateArticle} disabled={article.status === "archived" ? !disabled : disabled}>Modifier</button>
+            <button class="btn btn-danger" on:click={deleteArticle}>Supprimer</button>
+        </td>
     </tr>
 {/if}
 
