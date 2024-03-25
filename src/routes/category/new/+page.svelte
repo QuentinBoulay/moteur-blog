@@ -18,12 +18,30 @@
 
 <Header />
 
-<h1>Création d'une nouvelle catégorie</h1>
+<div class="container">
+    <h1>Création d'une nouvelle catégorie</h1>
+    
+    <input type="text" placeholder="Nom de la catégorie" bind:value={newCategory.name}>
+    
+    <div class="buttons">
+        <button on:click={addCategory}>Ajouter la catégorie</button>
+        <button on:click={() => goto(`/categories`)}>Retour à la liste des catégories</button>
+    </div>
+</div>
 
-<input type="text" placeholder="Nom de la catégorie" bind:value={newCategory.name}>
-
-<button on:click={addCategory}>Ajouter la catégorie</button>
-<button on:click={() => goto(`/categories`)}>Retour à la liste des catégories</button>
 
 <Footer />
 
+<style>
+    .buttons {
+        margin-top: 30px;
+    }
+
+    .buttons button:first-child {
+        margin-left: 0;
+    }
+
+    input {
+        margin: 5px 0;
+    }
+</style>

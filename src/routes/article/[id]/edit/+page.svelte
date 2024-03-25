@@ -43,35 +43,64 @@
 
 <Header />
 
-{#if article}
-    <h1>Article : {article.title}</h1>
-    <label>Titre :
-        <input type="text" bind:value={article.title} />
-    </label>
-    <br>
-    <label>Texte :
-        <textarea bind:value={article.text} />
-    </label>
-    <br>
-    <label>Categories :
-        <select multiple bind:value={article.categories}>
-            {#each categories as category}
-                <option value={category.name} selected={article.categories.includes(category.name)}>
-                    {category.name}
-                </option>
-            {/each}
-        </select>
-    </label>
-    <br>
-    <label>Statut :
-        <select bind:value={article.status}>
-            <option value="published">Published</option>
-            <option value="draft">Draft</option>
-            <option value="archived">Archived</option>
-        </select>
-    </label>
-    <br>
-    <button on:click={updateArticle}>Enregistrer</button>
-{/if}
+<div class="container">
+    {#if article}
+        <h1>Article : {article.title}</h1>
+        
+        <div class="form-block">
+            <label>Titre :
+                <input type="text" bind:value={article.title} />
+            </label>
+        </div>
+        
+        <div class="form-block">
+            <label>Texte :
+                <textarea bind:value={article.text} rows="6"/>
+            </label>
+        </div>
+
+        <div class="form-block">
+            <label>Categories :
+                {#if categories.length > 0}
+                    {#each categories as category}
+                        <label for={category.name}>{category.name}</label>
+                        <input type="checkbox" value={category.name} id={category.name} selected={article.categories.includes(category.name)}/>
+                    {/each}
+                {:else}
+                    <p>Aucune catégorie disponible</p>
+                {/if}
+            </label>
+        </div>
+
+        <div class="form-block">
+            <label>Statut :
+                <select bind:value={article.status}>
+                    <option value="published">Published</option>
+                    <option value="draft">Draft</option>
+                    <option value="archived">Archived</option>
+                </select>
+            </label>
+        </div>
+
+        <button on:click={updateArticle} class="btn btn-success">Enregistrer</button>
+    {/if}
+</div>
 
 <Footer />
+
+<style>
+    textarea {
+        width: 100%;
+        border: 1px solid var(--border-color);
+        border-radius: 5px;
+        margin: 5px 0;
+    }
+
+    input, select {
+        margin: 5px 0;
+    }
+
+    .btn-success {
+        margin: 10px 0;
+    }
+</style>

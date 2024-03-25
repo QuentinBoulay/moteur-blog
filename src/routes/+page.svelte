@@ -96,6 +96,7 @@
 
     #filters {
         display: flex;
+        flex-wrap: wrap;
         justify-content: space-between;
         align-items: center;
         border-radius: 10px;
@@ -108,15 +109,6 @@
         padding: 10px;
         border: 1px solid #ccc;
         height: 50px;
-    }
-
-    #filters input:first-child, #filters select:first-child {
-        border-radius: 10px 0 0 10px;
-        border-right: none;
-    }
-
-    #filters input:last-child, #filters select:last-child {
-        border-radius: 0 10px 10px 0;
-        border-left: none;
+        min-width: 200px;
     }
 </style>

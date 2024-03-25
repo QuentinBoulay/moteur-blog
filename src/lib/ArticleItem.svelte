@@ -38,45 +38,4 @@
     td {
         padding: 8px;
     }
-
-    .btn {
-        border: none;
-        padding: 8px 12px;
-        transition: all 0.3s ease-in-out;
-        cursor: pointer;
-        border-radius: 5px;
-    }
-
-    .btn-danger {
-        background-color: #ec0a0a;
-        color: white;
-        border: 2px solid #ec0a0a;
-    }
-
-    .btn-danger:hover {
-        background-color: white;
-        color: #e30d0d;
-    }
-
-    .btn-success {
-        background-color: #18b300;
-        color: white;
-        border: 2px solid #18b300;
-    }
-
-    .btn-success:hover {
-        background-color: white;
-        color: #18b300;
-    }
-
-    .btn-warning {
-        background-color: #d4b802;
-        color: white;
-        border: 2px solid #d4b802;
-    }
-
-    .btn-warning:hover {
-        background-color: white;
-        color: #d4b802;
-    }
 </style>
