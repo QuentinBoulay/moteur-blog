@@ -18,6 +18,30 @@
     }
 
     let disabled = false;
+
+    function displayStatus() {
+        let status = "";
+
+        switch (article.status) {
+            case "archived":
+                status = "Archivé";
+                break;
+
+            case "draft":
+                status = "Brouillon";
+                break;
+
+            case "published":
+                status = "Publié";
+                break;
+        
+            default:
+                status = "Inconnu";
+                break;
+        }
+
+        return status
+    }
 </script>
 
 {#if (article)}
@@ -25,7 +49,7 @@
         <td>{article.title}</td>
         <td>{article.date}</td>
         <td>{article.categories}</td>
-        <td>{article.status}</td>
+        <td>{displayStatus()}</td>
         <td>
             <button class="btn btn-success" on:click={showArticle}>Voir</button>
             <button class="btn btn-warning" on:click={updateArticle} disabled={article.status === "archived" ? !disabled : disabled}>Modifier</button>
