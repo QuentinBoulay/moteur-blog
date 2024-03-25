@@ -59,12 +59,14 @@
             </label>
         </div>
 
-        <div class="form-block">
+        <div class="form-block categories">
             <label>Categories :
                 {#if categories.length > 0}
                     {#each categories as category}
-                        <label for={category.name}>{category.name}</label>
-                        <input type="checkbox" value={category.name} id={category.name} selected={article.categories.includes(category.name)}/>
+                        <label for={category.name}>
+                            <input type="checkbox" value={category.name} id={category.name} checked={article.categories.includes(category.name)}/>
+                            {category.name}
+                        </label>
                     {/each}
                 {:else}
                     <p>Aucune catégorie disponible</p>
@@ -102,5 +104,15 @@
 
     .btn-success {
         margin: 10px 0;
+    }
+
+    .categories label {
+        width: 100%;
+        display: block;
+        margin: 5px 0;
+    }
+
+    .categories label:hover {
+        cursor: pointer;
     }
 </style>

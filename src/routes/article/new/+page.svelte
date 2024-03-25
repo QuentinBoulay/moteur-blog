@@ -40,35 +40,75 @@
 
 <Header />
 
-<h1>Création d'un nouvel article</h1>
+<div class="container">
+    <h1>Création d'un nouvel article</h1>
+    
+    <div class="form-block">
+        <label for="title">Titre de l'article</label>
+        <input type="text" id="title" placeholder="Titre de l'article" bind:value={newArticle.title}>
+    </div>
+    
+    <div class="form-block categories">
+        <label>Categories :
+            {#if categories.length > 0}
+                {#each categories as category}
+                    <label for={category.name}>
+                        <input type="checkbox" value={category} id={category.name} bind:group={selected}/>
+                        {category.name}
+                    </label>
+                {/each}
+            {:else}
+                <p>Aucune catégorie disponible</p>
+            {/if}
+        </label>
+    </div>
+    
+    <div class="form-block">
+        <label for="keyword">Mots-clés de l'article</label>
+        <input type="text" id="keyword" placeholder="Mots-clés de l'article" bind:value={newArticle.keywords}>
+    </div>
+    
+    <div class="form-block">
+        <label for="status">Statut de l'article</label>
+        <select id="status" bind:value={newArticle.status}>
+            <option value="draft">Brouillon</option>
+            <option value="published">Publié</option>
+        </select>
+    </div>
+    
+    <div class="form-block">
+        <label for="content-article">Contenu de l'article</label>
+        <textarea cols="30" rows="10" id="content-article" bind:value={newArticle.text}></textarea>
+    </div>
 
-<input type="text" placeholder="Titre de l'article" bind:value={newArticle.title}>
-<br>
-
-<select multiple bind:value={selected}>
-    {#each categories as category}
-        <option value={category}>
-            {category.name}
-        </option>
-    {/each}
-</select>
-<br>
-
-<input type="text" placeholder="Mots-clés de l'article" bind:value={newArticle.keywords}>
-<br>
-
-<select bind:value={newArticle.status}>
-    <option value="draft">Brouillon</option>
-    <option value="published">Publié</option>
-</select>
-<br>
-
-<textarea cols="30" rows="10" bind:value={newArticle.text}></textarea>
-<br>
-
-<button on:click={addArticle}>Ajouter l'article</button>
-<button on:click={goToHome}>Revenir à l'accueil</button>
+    <div class="buttons">
+        <button on:click={addArticle}>Ajouter l'article</button>
+        <button on:click={goToHome}>Revenir à l'accueil</button>
+    </div>
+</div>
 
 
 <Footer />
 
+<style>
+    textarea {
+        width: 100%;
+        border: 1px solid var(--border-color);
+        border-radius: 5px;
+        margin-top: 5px;
+    }
+
+    select, input {
+        margin: 5px 0;
+    }
+
+    .categories label {
+        width: 100%;
+        display: block;
+        margin: 5px 0;
+    }
+
+    .categories label:hover {
+        cursor: pointer;
+    }
+</style>

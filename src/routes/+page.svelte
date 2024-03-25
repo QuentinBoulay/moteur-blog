@@ -57,7 +57,12 @@
             {/each}
         </select>
     </section>
-    
+
+    <div class="buttons">
+        <button on:click={addArticle}>Ajouter un article</button>
+        <button on:click={categoriesList}>Liste des catégories</button>
+    </div>
+
     {#if (getArticles().length > 0)}
         {#if (filteredArticles.length > 0)}
         <table>
@@ -78,9 +83,6 @@
     {:else}
         <p>Aucun article n'est disponible actuellement</p>
     {/if}
-    
-    <button on:click={addArticle}>Ajouter un article</button>
-    <button on:click={categoriesList}>Liste des catégories</button>
 </div>
 
 <Footer />
@@ -112,5 +114,9 @@
         border: 1px solid #ccc;
         height: 50px;
         min-width: 200px;
+    }
+
+    .buttons button:first-child {
+        margin-left: 0;
     }
 </style>
