@@ -11,7 +11,7 @@
     let filteredArticles = [];
 
     $: {
-        let articlesList = getArticles();
+        let articlesList = $articles;
 
         if (status) {
             filteredArticles = articlesList.filter(article => article.status === status);
@@ -22,6 +22,8 @@
         if (search) {
             filteredArticles = articlesList.filter(article => article.title.includes(search));
         }
+
+        console.log(articlesList);
     }
 
     function addArticle() {
@@ -56,7 +58,7 @@
         </select>
     </section>
     
-    {#if ($articles.length > 0)}
+    {#if (getArticles().length > 0)}
         {#if (filteredArticles.length > 0)}
         <table>
             <tr>
