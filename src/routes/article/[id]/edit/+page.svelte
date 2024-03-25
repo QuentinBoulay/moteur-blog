@@ -5,6 +5,7 @@
     import Header from '../../../../lib/templates/Header.svelte';
     import Footer from '../../../../lib/templates/Footer.svelte';
     import { onDestroy } from 'svelte';
+    import Editor from '$lib/Editor.svelte'
 
     let article = {
         title: '',
@@ -14,6 +15,10 @@
     };
 
     let categories = getCategories();
+
+    function onContentChange(event) {
+        article.text = event.detail;
+    }
 
     function findArticle() {
         return $articles.find(a => a.id == $page.params.id);
@@ -54,9 +59,8 @@
         </div>
         
         <div class="form-block">
-            <label>Texte :
-                <textarea bind:value={article.text} rows="6"/>
-            </label>
+            <p>Texte :</p>
+            <Editor on:contentChanged={onContentChange} content={article.text}/>
         </div>
 
         <div class="form-block categories">

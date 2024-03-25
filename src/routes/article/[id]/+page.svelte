@@ -18,7 +18,7 @@
                 <h1>Article : {article.title}</h1>
                 <p class="date">Publié le : {article.date}</p>
                 <p class="categories">Categories : {article.categories}</p>
-                <p class="content">{article.text}</p>
+                <p class="content">{@html article.text}</p>
             {/if}
         {/each}
     {/if}

@@ -4,6 +4,7 @@
     import "../../../styles/global.css";
     import Header from '../../../lib/templates/Header.svelte';
     import Footer from '../../../lib/templates/Footer.svelte';
+    import Editor from '$lib/Editor.svelte'
 
     let selected = [];
 
@@ -18,6 +19,10 @@
         keywords: "",
         status: "draft"
     };
+
+    function onContentChange(event) {
+        newArticle.text = event.detail;
+    }
 
     function addArticle() {
         let date = new Date();
@@ -78,7 +83,7 @@
     
     <div class="form-block">
         <label for="content-article">Contenu de l'article</label>
-        <textarea cols="30" rows="10" id="content-article" bind:value={newArticle.text}></textarea>
+        <Editor on:contentChanged={onContentChange} />
     </div>
 
     <div class="buttons">
