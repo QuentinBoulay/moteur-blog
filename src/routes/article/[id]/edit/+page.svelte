@@ -100,13 +100,6 @@
 <Footer />
 
 <style>
-    textarea {
-        width: 100%;
-        border: 1px solid var(--border-color);
-        border-radius: 5px;
-        margin: 5px 0;
-    }
-
     input, select {
         margin: 5px 0;
     }

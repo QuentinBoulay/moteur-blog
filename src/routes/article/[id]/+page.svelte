@@ -16,9 +16,13 @@
         {#each $articles as article}
             {#if article.id == $page.params.id}
                 <h1>Article : {article.title}</h1>
-                <p class="date">Publié le : {article.date}</p>
-                <p class="categories">Categories : {article.categories}</p>
-                <p class="content">{@html article.text}</p>
+                <div class="infos">
+                    <p class="date">Publié le : {article.date}</p>
+                    <p class="categories">Categories : {article.categories}</p>
+                    <p class="categories">Mots-clés : {article.keywords}</p>
+                </div>
+
+                <div class="content">{@html article.text}</div>
             {/if}
         {/each}
     {/if}
@@ -45,6 +49,11 @@
 
     .content {
         margin: 40px 0;
+    }
+
+    .infos {
+        padding-bottom: 30px;
+        border-bottom: 1px solid var(--border-color);
     }
 </style>
 

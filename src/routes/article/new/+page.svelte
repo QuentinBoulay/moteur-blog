@@ -69,7 +69,7 @@
     </div>
     
     <div class="form-block">
-        <label for="keyword">Mots-clés de l'article</label>
+        <label for="keyword">Mots-clés de l'article (Séparés par des virgules)</label>
         <input type="text" id="keyword" placeholder="Mots-clés de l'article" bind:value={newArticle.keywords}>
     </div>
     
