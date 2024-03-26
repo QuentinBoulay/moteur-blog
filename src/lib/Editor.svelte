@@ -2,6 +2,7 @@
     import { onMount, onDestroy, createEventDispatcher } from 'svelte'
     import { Editor } from '@tiptap/core'
     import StarterKit from '@tiptap/starter-kit'
+    import AddImageButton from './AddImageButton.svelte'
   
     const dispatch = createEventDispatcher();
     
@@ -69,6 +70,8 @@
   {/if}
   
   <div class="content" bind:this={element} />
+
+  <AddImageButton bind:editor />
   
   <style>
     button.active {
