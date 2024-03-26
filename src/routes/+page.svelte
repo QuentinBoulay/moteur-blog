@@ -7,7 +7,7 @@
 
     let status;
     let category;
-    let search;
+    let search = "";
     let filteredArticles = [];
 
     $: {
@@ -63,20 +63,24 @@
 
     {#if (getArticles().length > 0)}
         {#if (filteredArticles.length > 0)}
-        <table>
-            <tr>
-                <th scope="column">Titre</th>
-                <th scope="column">Date de publication</th>
-                <th scope="column">Catégories</th>
-                <th scope="column">Statut</th>
-                <th scope="column">Actions</th>
-            </tr>
-            {#each filteredArticles as article (article.id)}
-                <ArticleItem {article} />
-            {/each}
-        </table>
+            <table>
+                <tr>
+                    <th scope="column">Titre</th>
+                    <th scope="column">Date de publication</th>
+                    <th scope="column">Catégories</th>
+                    <th scope="column">Statut</th>
+                    <th scope="column">Actions</th>
+                </tr>
+                {#each filteredArticles as article (article.id)}
+                    <ArticleItem {article} />
+                {/each}
+            </table>
         {:else}
-            <p>Aucun article ne correspond à votre recherche</p>
+            {#if (search.length > 0)}
+                <p>Aucun article ne correspond à votre recherche</p>
+            {:else}
+                <p>Aucun article n'est disponible actuellement</p>
+            {/if}
         {/if}
     {:else}
         <p>Aucun article n'est disponible actuellement</p>
@@ -84,6 +88,7 @@
 </div>
 
 <Footer />
+
 
 <style>
     table {

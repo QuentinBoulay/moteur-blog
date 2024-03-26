@@ -7,7 +7,7 @@
 <nav>
     <ul>
         <li><a href="/">Accueil</a></li>
-        <li><a href="/categories">Catégories</a></li>
+        <li><a href="/categories">Gestion des catégories</a></li>
     </ul>
 </nav>
 
@@ -22,11 +22,14 @@
         list-style: none;
         padding: 0;
         margin: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
     }
 
     li {
         display: inline;
-        margin-right: 10px;
+        margin-right: 15px;
     }
 
     a {
