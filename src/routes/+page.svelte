@@ -22,8 +22,6 @@
         if (search) {
             filteredArticles = articlesList.filter(article => article.title.includes(search));
         }
-
-        console.log(articlesList);
     }
 
     function addArticle() {
