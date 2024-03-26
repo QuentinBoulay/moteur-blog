@@ -49,7 +49,13 @@
         <td>{article.title}</td>
         <td>{article.date}</td>
         <td>{article.categories}</td>
-        <td>{displayStatus()}</td>
+        <td>
+            <select bind:value={article.status}>
+                <option value="published">Publié</option>
+                <option value="draft">Brouillon</option>
+                <option value="archived">Archivé</option>
+            </select>
+        </td>
         <td>
             <button class="btn btn-success" on:click={showArticle}>Voir</button>
             <button class="btn btn-warning" on:click={updateArticle} disabled={article.status === "archived" ? !disabled : disabled}>Modifier</button>
