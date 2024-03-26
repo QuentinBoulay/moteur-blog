@@ -81,9 +81,9 @@
         <div class="form-block">
             <label>Statut :
                 <select bind:value={article.status}>
-                    <option value="published">Published</option>
-                    <option value="draft">Draft</option>
-                    <option value="archived">Archived</option>
+                    <option value="published">Publié</option>
+                    <option value="draft">Brouillon</option>
+                    <option value="archived">Archivé</option>
                 </select>
             </label>
         </div>
