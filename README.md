@@ -1,38 +1,42 @@
-# create-svelte
+# Titre du projet : Moteur de Blog Svelte
 
-Everything you need to build a Svelte project, powered by [`create-svelte`](https://github.com/sveltejs/kit/tree/main/packages/create-svelte).
+## Description
+Ce projet est un moteur de blog construit avec Svelte. Il comprend des fonctionnalités telles que la création, l'édition, et l'affichage d'articles, la gestion des catégories, et un éditeur intégré.
 
-## Creating a project
+## Prérequis
+- Node.js (version recommandée : voir `package.json`)
 
-If you're seeing this, you've probably already done this step. Congrats!
-
+## Installation
+2. Installez les dépendances :
 ```bash
-# create a new project in the current directory
-npm create svelte@latest
-
-# create a new project in my-app
-npm create svelte@latest my-app
+npm install
 ```
 
-## Developing
-
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
-
+## Utilisation
+1. Démarrez le serveur de développement :
 ```bash
 npm run dev
-
-# or start the server and open the app in a new browser tab
-npm run dev -- --open
 ```
+2. Ouvrez votre navigateur et accédez à l'URL suivante : `http://localhost:5173/`
 
-## Building
+## Fonctionnalités
+1. Gestion des articles :
+    - Création d'articles : `/article/new` (src/routes/article/new/+page.svelte)
+    - Édition d'articles : `/article/[id]/edit` (src/routes/article/[id]/edit/+page.svelte)
+        - L'ID est récupéré à partir de l'URL 
+    - Affichage d'articles : `/article/[id]` (src/routes/article/[id]/+page.svelte)
 
-To create a production version of your app:
+2. Gestion des catégories : 
+    - Création de catégories : `/category/new` (src/routes/category/new/+page.svelte)
+    - Vue des catégories : `/categories` (src/routes/categories/+page.svelte)
 
-```bash
-npm run build
-```
+3. Composants de template :
+    - En-tête et pied de page : `Header.svelte` et `Footer.svelte` (src/lib/templates)
 
-You can preview the production build with `npm run preview`.
+## Auteur
 
-> To deploy your app, you may need to install an [adapter](https://kit.svelte.dev/docs/adapters) for your target environment.
+- Sébastien BURNET
+- Quentin BOULAY
+
+
+
