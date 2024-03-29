@@ -1,4 +1,4 @@
-import { writable, get } from 'svelte/store';
+import { writable } from 'svelte/store';
 
 function createArticlesStore() {
     const { subscribe, update, set } = writable([]);
@@ -33,13 +33,4 @@ function createCategoryStore() {
 
 export const articles = createArticlesStore();
 export const categories = createCategoryStore();
-
-export function getArticles() {
-    return get(articles);
-}
-
-export function getCategories() {
-    return get(categories);
-}
-
  

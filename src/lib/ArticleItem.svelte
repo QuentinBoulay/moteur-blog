@@ -13,35 +13,11 @@
     }
 
     function deleteArticle() {
-        console.log(article.id)
         articles.delete(article.id);
     }
 
     let disabled = false;
 
-    function displayStatus() {
-        let status = "";
-
-        switch (article.status) {
-            case "archived":
-                status = "Archivé";
-                break;
-
-            case "draft":
-                status = "Brouillon";
-                break;
-
-            case "published":
-                status = "Publié";
-                break;
-        
-            default:
-                status = "Inconnu";
-                break;
-        }
-
-        return status
-    }
 </script>
 
 {#if (article)}

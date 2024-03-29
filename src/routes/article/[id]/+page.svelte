@@ -9,7 +9,6 @@
 
 <Header />
 
-
 <div class="container">
 
     {#if $articles}
@@ -30,9 +29,7 @@
     <button on:click={() => goto(`/`)}>Retour à la liste des articles</button>
 </div>
 
-
 <Footer />
-
 
 <style>
     button {

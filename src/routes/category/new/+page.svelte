@@ -1,12 +1,12 @@
 <script>
-    import { categories, getCategories } from "../../../lib/stores.js";
+    import { categories } from "../../../lib/stores.js";
     import { goto } from '$app/navigation';
     import "../../../styles/global.css"
     import Header from '../../../lib/templates/Header.svelte';
     import Footer from '../../../lib/templates/Footer.svelte';
 
     let newCategory = {
-        id: getCategories().length + 1,
+        id: $categories.length + 1,
         name: ""
     };
 

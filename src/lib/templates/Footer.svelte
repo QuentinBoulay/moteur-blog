@@ -1,7 +1,5 @@
 <script>
-    import { goto } from '$app/navigation';
     import "../../styles/global.css";
-
 </script>
 
 <footer>

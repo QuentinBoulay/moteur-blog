@@ -34,7 +34,7 @@
 {#if editor}
   <div class="menu-editor">
     <button
-      on:click={() => console.log && editor.chain().focus().toggleBold().run()}
+      on:click={() => editor.chain().focus().toggleBold().run()}
       disabled={!editor.can().chain().focus().toggleBold().run()}
       class={editor.isActive("bold") ? "is-active" : ""}
     >

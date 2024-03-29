@@ -5,7 +5,7 @@
     import Header from '../../../../lib/templates/Header.svelte';
     import Footer from '../../../../lib/templates/Footer.svelte';
     import { onDestroy } from 'svelte';
-    import Editor from '$lib/Editor.svelte'
+    import Editor from '$lib/Editor.svelte';
 
     let article = {
         title: '',

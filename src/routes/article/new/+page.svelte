@@ -1,17 +1,15 @@
 <script>
-    import { articles, getArticles, getCategories } from "../../../lib/stores.js";
+    import { articles, categories } from "../../../lib/stores.js";
     import { goto } from '$app/navigation';
     import "../../../styles/global.css";
     import Header from '../../../lib/templates/Header.svelte';
     import Footer from '../../../lib/templates/Footer.svelte';
-    import Editor from '$lib/Editor.svelte'
+    import Editor from '$lib/Editor.svelte';
 
     let selected = [];
 
-    let categories = getCategories();
-
     let newArticle = {
-        id: getArticles().length + 1,
+        id: $articles.length + 1,
         title: "",
         date: "",
         text: "",
@@ -55,8 +53,8 @@
     
     <div class="form-block categories">
         <label>Categories :
-            {#if categories.length > 0}
-                {#each categories as category}
+            {#if $categories.length > 0}
+                {#each $categories as category}
                     <label for={category.name}>
                         <input type="checkbox" value={category} id={category.name} bind:group={selected}/>
                         {category.name}
@@ -96,13 +94,6 @@
 <Footer />
 
 <style>
-    textarea {
-        width: 100%;
-        border: 1px solid var(--border-color);
-        border-radius: 5px;
-        margin-top: 5px;
-    }
-
     select, input {
         margin: 5px 0;
     }

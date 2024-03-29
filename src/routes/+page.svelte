@@ -1,7 +1,7 @@
 <script>
     import { goto } from '$app/navigation';
     import ArticleItem from "../lib/ArticleItem.svelte";
-    import { articles, categories, getArticles } from "../lib/stores.js";
+    import { articles, categories } from "../lib/stores.js";
     import Header from '../lib/templates/Header.svelte';
     import Footer from '../lib/templates/Footer.svelte';
 
@@ -59,7 +59,7 @@
         <button on:click={categoriesList}>Liste des catégories</button>
     </div>
 
-    {#if (getArticles().length > 0)}
+    {#if ($articles.length > 0)}
         {#if (filteredArticles.length > 0)}
             <table>
                 <tr>
@@ -86,7 +86,6 @@
 </div>
 
 <Footer />
-
 
 <style>
     table {
