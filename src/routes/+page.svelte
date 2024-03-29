@@ -13,15 +13,13 @@
     $: {
         let articlesList = $articles;
 
-        if (status) {
-            filteredArticles = articlesList.filter(article => article.status === status);
-        } else {
-            filteredArticles = articlesList;
-        }
+        filteredArticles = articlesList.filter(article => {
+            let matchesStatus = !status || article.status === status;
+            let matchesSearch = !search || article.title.includes(search);
+            let matchesCategory = !category || category === "all" || category === "none" && article.categories.length === 0 || article.categories.includes(category);
 
-        if (search) {
-            filteredArticles = articlesList.filter(article => article.title.includes(search));
-        }
+            return matchesStatus && matchesSearch && matchesCategory;
+        });
     }
 
     function addArticle() {

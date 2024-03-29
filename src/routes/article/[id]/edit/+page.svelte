@@ -11,13 +11,16 @@
         title: '',
         text: '',
         categories: [],
+        keywords: [],
         status: ''
     };
 
     let selection = [];
+    let keywords = [];
 
     $: {
         article.categories = selection;
+        article.keywords = keywords;
     }
 
     function onContentChange(event) {
@@ -42,6 +45,7 @@
     function initialize() {
         article = findArticle();
         selection = article.categories;
+        keywords = article.keywords;
     }
 
     initialize();
@@ -80,6 +84,12 @@
                 {:else}
                     <p>Aucune catégorie disponible</p>
                 {/if}
+            </label>
+        </div>
+
+        <div class="form-block">
+            <label>Mots-clés :
+                <input type="text" bind:value={keywords} />
             </label>
         </div>
 

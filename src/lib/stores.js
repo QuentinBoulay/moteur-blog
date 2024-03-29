@@ -1,8 +1,7 @@
 import { writable, get } from 'svelte/store';
-import initialData from './articles.json';
 
 function createArticlesStore() {
-    const { subscribe, update, set } = writable(initialData);
+    const { subscribe, update, set } = writable([]);
 
     return {
         subscribe,

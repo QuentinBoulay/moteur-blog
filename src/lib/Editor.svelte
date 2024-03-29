@@ -3,7 +3,6 @@
   import { writable } from "svelte/store";
   import { Editor } from "@tiptap/core";
   import StarterKit from "@tiptap/starter-kit";
-  import AddImageButton from "./AddImageButton.svelte";
 
   const dispatch = createEventDispatcher();
 
