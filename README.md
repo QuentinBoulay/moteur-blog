@@ -1,4 +1,4 @@
-# Titre du projet : Moteur de Blog Svelte
+# Moteur de Blog Svelte
 
 ## Description
 Ce projet est un moteur de blog construit avec Svelte. Il comprend des fonctionnalités telles que la création, l'édition, et l'affichage d'articles, la gestion des catégories, et un éditeur intégré.
