@@ -4,7 +4,7 @@
 Ce projet est un moteur de blog construit avec Svelte. Il comprend des fonctionnalités telles que la création, l'édition, et l'affichage d'articles, la gestion des catégories, et un éditeur intégré.
 
 ## Prérequis
-- Node.js (version recommandée : voir `package.json`)
+- Node.js (version recommandée : >= 18 ou voir `package.json`)
 
 ## Installation
 2. Installez les dépendances :
