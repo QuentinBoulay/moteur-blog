@@ -1,6 +1,6 @@
 <script>
     import { goto } from '$app/navigation';
-    import { categories } from '../../lib/stores';
+    import { categories, articles } from '../../lib/stores';
     import Header from '../../lib/templates/Header.svelte';
     import Footer from '../../lib/templates/Footer.svelte';
 
@@ -11,6 +11,28 @@
     function goToHome() {
         goto(`/`);
     }
+
+    function deleteCategory(id, name) {
+        categories.delete(id);
+        
+        $articles.forEach(article => {
+            const index = $articles.findIndex(a => a.id === article.id);
+            if (index !== -1) {
+                let newCategories = $articles[index].categories.filter(categoryId => categoryId != name);
+                let newArticle = $articles[index]
+                newArticle.categories = newCategories
+
+                articles.update(articles => {
+                    articles[index] = newArticle;
+                    return articles;
+                });
+            }
+        });
+    }
+
+
+
+
 </script>
 
 <Header />
@@ -20,12 +42,19 @@
     
     {#if ($categories.length > 0)}
         <table>
+            <colgroup>
+                <col span="1" style="width: 85%;">
+                <col span="1" style="width: 15%;">
+             </colgroup>
+
             <tr>
                 <th scope="column">Nom</th>
+                <th scope="column">Actions</th>
             </tr>
             {#each $categories as category}
                 <tr>
                     <td>{category.name}</td>
+                    <td class="actions"><button class="btn btn-danger" on:click={() => deleteCategory(category.id, category.name)}>Supprimer</button></td>
                 </tr>
             {/each}
         </table>
@@ -47,6 +76,10 @@
     }
 
     .buttons button:first-child {
+        margin-left: 0;
+    }
+
+    .actions button {
         margin-left: 0;
     }
 </style>

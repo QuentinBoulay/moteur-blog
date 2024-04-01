@@ -28,6 +28,9 @@ function createCategoryStore() {
         subscribe,
         set: (categories) => update(() => categories),
         add: (category) => update(categories => [...categories, category]),
+        delete: (id) =>  { 
+            update(categories => categories.filter(categorie => categorie.id !== id));
+        },
     };
 }
 
