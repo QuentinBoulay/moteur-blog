@@ -73,7 +73,7 @@
         </div>
 
         <div class="form-block categories">
-            <label>Categories :
+            <label>Catégories :
                 {#if $categories.length > 0}
                     {#each $categories as category}
                         <label for={category.name}>

@@ -17,7 +17,7 @@
                 <h1>Article : {article.title}</h1>
                 <div class="infos">
                     <p class="date">Publié le : {article.date}</p>
-                    <p class="categories">Categories : {article.categories}</p>
+                    <p class="categories">Catégories : {article.categories}</p>
                     <p class="categories">Mots-clés : {article.keywords}</p>
                 </div>
 

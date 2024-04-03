@@ -3,7 +3,7 @@
 </script>
 
 <footer>
-    <p class="copyright">© 2024 - Moteur de blog par Sébastien Burnet et Quentin Boulay</p>
+    <p class="copyright">© 2024 - Moteur de blog par Sébastien Burnet, Quentin Boulay et Kenzo Thomias</p>
 </footer>
 
 <style>

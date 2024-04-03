@@ -37,6 +37,7 @@ npm run dev
 
 - Sébastien BURNET
 - Quentin BOULAY
+- Kenzo Thomias
 
 
 
